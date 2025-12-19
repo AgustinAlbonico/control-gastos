@@ -33,13 +33,13 @@ export function HomePage() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
-                    <p className="text-slate-500">{formatMonthYear(currentMonth, currentYear)}</p>
+                    <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">Dashboard</h1>
+                    <p className="text-sm text-slate-500 sm:text-base">{formatMonthYear(currentMonth, currentYear)}</p>
                 </div>
-                <Link to="/transacciones">
-                    <Button className="gap-2">
+                <Link to="/transacciones" className="w-full sm:w-auto">
+                    <Button className="gap-2 w-full sm:w-auto">
                         <Plus className="h-4 w-4" />
                         Nueva Transacción
                     </Button>
@@ -140,20 +140,20 @@ export function HomePage() {
                                         key={transaction.id}
                                         className="flex items-center justify-between rounded-lg border p-3 transition-colors hover:bg-slate-50"
                                     >
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-2xl">{category?.icon || '📦'}</span>
-                                            <div>
-                                                <p className="font-medium text-slate-900">
+                                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                                            <span className="text-xl sm:text-2xl flex-shrink-0">{category?.icon || '📦'}</span>
+                                            <div className="min-w-0">
+                                                <p className="font-medium text-slate-900 text-sm sm:text-base truncate">
                                                     {transaction.description}
                                                 </p>
-                                                <p className="text-sm text-slate-500">
+                                                <p className="text-xs sm:text-sm text-slate-500">
                                                     {category?.name || 'Sin categoría'}
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className={`text-right font-semibold ${transaction.type === 'INCOME'
-                                                ? 'text-emerald-600'
-                                                : 'text-red-600'
+                                        <div className={`text-right font-semibold flex-shrink-0 ml-2 ${transaction.type === 'INCOME'
+                                            ? 'text-emerald-600'
+                                            : 'text-red-600'
                                             }`}>
                                             {transaction.type === 'INCOME' ? '+' : '-'}
                                             {formatCurrency(transaction.amount)}
@@ -168,3 +168,4 @@ export function HomePage() {
         </div>
     );
 }
+

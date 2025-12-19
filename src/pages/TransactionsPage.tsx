@@ -230,12 +230,12 @@ export function TransactionsPage() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-900">Transacciones</h1>
-                    <p className="text-slate-500">Registrá y consultá tus movimientos</p>
+                    <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">Transacciones</h1>
+                    <p className="text-sm text-slate-500 sm:text-base">Registrá y consultá tus movimientos</p>
                 </div>
-                <Button onClick={openCreateDialog} className="gap-2">
+                <Button onClick={openCreateDialog} className="gap-2 w-full sm:w-auto">
                     <Plus className="h-4 w-4" />
                     Nueva Transacción
                 </Button>
@@ -289,21 +289,25 @@ export function TransactionsPage() {
 
                     {/* Rango personalizado */}
                     {dateRangeType === 'custom' && (
-                        <div className="flex gap-3 items-center bg-slate-50 p-3 rounded-lg">
-                            <Label className="text-sm text-slate-600">Desde:</Label>
-                            <Input
-                                type="date"
-                                value={customStartDate}
-                                onChange={(e) => setCustomStartDate(e.target.value)}
-                                className="w-auto"
-                            />
-                            <Label className="text-sm text-slate-600">Hasta:</Label>
-                            <Input
-                                type="date"
-                                value={customEndDate}
-                                onChange={(e) => setCustomEndDate(e.target.value)}
-                                className="w-auto"
-                            />
+                        <div className="flex flex-col gap-2 bg-slate-50 p-3 rounded-lg sm:flex-row sm:items-center sm:gap-3">
+                            <div className="flex items-center gap-2">
+                                <Label className="text-sm text-slate-600 whitespace-nowrap">Desde:</Label>
+                                <Input
+                                    type="date"
+                                    value={customStartDate}
+                                    onChange={(e) => setCustomStartDate(e.target.value)}
+                                    className="flex-1"
+                                />
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Label className="text-sm text-slate-600 whitespace-nowrap">Hasta:</Label>
+                                <Input
+                                    type="date"
+                                    value={customEndDate}
+                                    onChange={(e) => setCustomEndDate(e.target.value)}
+                                    className="flex-1"
+                                />
+                            </div>
                         </div>
                     )}
 
